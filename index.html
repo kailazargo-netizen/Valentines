@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine Surprise 💖</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Comic Sans MS', cursive;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .page {
+        display: none;
+        background: white;
+        padding: 50px;
+        border-radius: 25px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        max-width: 500px;
+    }
+
+    .page.active {
+        display: block;
+    }
+
+    h1 {
+        color: #ff4d6d;
+        font-size: 2.2em;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 1.5em;
+        margin-bottom: 30px;
+    }
+
+    button {
+        padding: 20px 40px;
+        font-size: 1.5em;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        margin: 15px;
+    }
+
+    .next-btn { background: #ff4d6d; color: white; }
+    .yes-btn { background: #38b000; color: white; }
+    .no-btn { background: #d00000; color: white; position: relative; }
+
+    img {
+        width: 350px; /* bigger GIF */
+        max-width: 95vw; /* responsive for phones */
+        border-radius: 20px;
+        margin-top: 25px;
+    }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+    <h1>Hi Janna S. Herrera 💕</h1>
+    <p>I made something fun for you…</p>
+    <button class="next-btn" onclick="nextPage('page2')">Open 💌</button>
+</div>
+
+<!-- PAGE 2: Pogi Question -->
+<div class="page" id="page2">
+    <h1>Pogi Ba ako? 😏</h1>
+    <button class="yes-btn" onclick="nextPage('page3YesPogi')">Yes 🥰</button>
+    <button class="no-btn" onmouseover="moveNo(this)" onclick="nextPage('page3NoPogi')">No 😢</button>
+</div>
+
+<!-- PAGE 3A: Yes Pogi -->
+<div class="page" id="page3YesPogi">
+    <h1>Yeyy iloveyou 💖</h1>
+    <button class="next-btn" onclick="nextPage('page4Valentine')">Next 💌</button>
+</div>
+
+<!-- PAGE 3B: No Pogi -->
+<div class="page" id="page3NoPogi">
+    <h1>Ampogi mo sobra 😘</h1>
+    <button class="next-btn" onclick="nextPage('page4Valentine')">Next 💌</button>
+</div>
+
+<!-- PAGE 4: Valentine Question -->
+<div class="page" id="page4Valentine">
+    <h1>Will you be my Valentine? 💖</h1>
+    <button class="yes-btn" onclick="nextPage('page5YesValentine')">Yes 🥰</button>
+    <button class="no-btn" onclick="nextPage('page5NoValentine')">No 😢</button>
+</div>
+
+<!-- PAGE 5A: Yes Valentine -->
+<div class="page" id="page5YesValentine">
+    <h1>YAYYY!! 💕🥹</h1>
+    <p>You made my heart so happy 💖</p>
+    <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="Cute GIF">
+</div>
+
+<!-- PAGE 5B: No Valentine -->
+<div class="page" id="page5NoValentine">
+    <h1>Oh no 😢💔</h1>
+    <p>But I still think you’re cute 😠🥹</p>
+    <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Cute mad cat GIF">
+</div>
+
+<script>
+    function nextPage(id) {
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(p => p.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+    }
+
+    function moveNo(btn) {
+        const x = Math.random() * 250 - 125;
+        const y = Math.random() * 250 - 125;
+        btn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+</script>
+
+</body>
+</html>
